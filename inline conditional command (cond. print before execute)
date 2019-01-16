@@ -1,0 +1,1 @@
+$( (( condition == 1 )) && printf %s 'conditional_args ' ) :
