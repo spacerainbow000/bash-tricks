@@ -1,1 +1,1 @@
-$( (( condition == 1 )) && printf %s 'conditional_args ' ) :
+: $( (( condition == 1 )) && printf %s 'conditional_flags ' )
