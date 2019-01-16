@@ -1,0 +1,6 @@
+local rfile=filename
+exec 4<${rfile} #open file descriptor
+while read -u4 line ;
+do
+    :
+done
