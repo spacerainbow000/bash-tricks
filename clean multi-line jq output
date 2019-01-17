@@ -1,0 +1,5 @@
+#this is useful for reading the results of a jq query into a bash variable; multi-line results get messed up sometimes idk why
+#it might be necessary to do this line-by-line in a loop over the results of the initial jq query, appending ot the final result variable as you go
+JQRESULT=$(echo ${json} | jq --raw-output -M '.')
+CLEANED=${JQRESULT//[$'\t\r\n']} && CLEANED=${CLEANED%%*( )}
+JQCLEANEDRESULT="${CLEANED##*( )}"
