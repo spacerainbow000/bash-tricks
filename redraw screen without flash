@@ -1,0 +1,22 @@
+# doing 'clear' then writing the data you want has the disadvantage of producing
+# a flash on the screen, which if you're redrawing frequently (like for a timer)
+# can be super annoying. this script takes a string as an argument, which it will
+# write to the screen without doing a clear, but still showing only the new data
+# you specified. add '\n' to the arguments for a newline
+
+redraw () {
+    HOME=$(tput cup 0 0)
+    ED=$(tput ed)
+    EL=$(tput el)
+    COLS=$(tput cols)
+    while read -r LINE ;
+    do
+        printf '%-*.*s%s\n' ${COLS} ${COLS} "${LINE}" "${EL}"
+    done <<< $(echo -e "${@}")
+    printf '%s%s' "${ED}" "${HOME}"
+}
+
+# this is the format to do this without a function, IE from inside a python script
+# the data to write goes in WRITEVAR, add \n for newlines
+
+WRITEVAR='DATA TO WRITE GOES HERE IN THIS STRING' && HOME=$(tput cup 0 0) && ED=$(tput ed) && EL=$(tput el) && COLS=$(tput cols) && while read -r LINE ; do printf '%-*.*s%s\n' ${COLS} ${COLS} "${LINE}" "${EL}" ; done <<< $(echo -e "${WRITEVAR}") && printf '%s%s' "${ED}" "${HOME}"
