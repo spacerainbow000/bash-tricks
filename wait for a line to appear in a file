@@ -1,0 +1,3 @@
+WTERM=""
+WFILE=""
+sh -c 'tail -n +0 --pid=$$ -f '"${WFILE}"' | { sed "/'"${WTERM}"'/ q" && kill $$ ;}'
