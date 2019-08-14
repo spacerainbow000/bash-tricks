@@ -7,6 +7,6 @@ _EOF2
      )
 echo "${var}"
 
-// output:
-// ${test} variable won't resolve
-// yes will
+# output:
+# ${test} variable won't resolve
+# yes will
