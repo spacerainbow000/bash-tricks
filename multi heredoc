@@ -1,5 +1,5 @@
 test="yes"
-var=$(cat << '_EOF' ; cat << _EOF2
+var=$({ cat << '_EOF' ; cat << _EOF2 ; }
 ${test} variable won't resolve
 _EOF
 ${test} will
