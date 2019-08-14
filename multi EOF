@@ -1,0 +1,12 @@
+test="yes"
+var=$(cat << '_EOF' << _EOF2
+${test} variable won't resolve
+_EOF
+${test} will
+_EOF2
+     )
+echo "${var}"
+
+// output:
+// ${test} variable won't resolve
+// yes will
