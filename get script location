@@ -1,0 +1,14 @@
+#it's kinda hard to _really_ know where your script is running from... this is how to know, 100%, definitely, for sure where you are
+_SCRIPTLOC=${BASH_SOURCE[0]}
+while [ -L ${_SCRIPTLOC} ] ;
+do
+    _SCRIPTLOC=$(readlink ${_SCRIPTLOC})
+done
+_SCRIPTLOC=$(dirname ${_SCRIPTLOC})
+if [[ "${_SCRIPTLOC}" == "." ]] ;
+then
+    readonly SCRIPTLOC=$(pwd)
+else
+    readonly SCRIPTLOC=_SCRIPTLOC
+fi
+unset _SCRIPTLOC
